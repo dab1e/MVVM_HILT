@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navOneFragment"
+    tools:ignore="MissingDefaultResource">
+
+    <fragment
+        android:id="@+id/navOneFragment"
+        android:name="com.example.mvvm_hilt.ui.fragment.NavOneFragment"
+        android:label="nav_one_fragment"
+        tools:layout="@layout/nav_one_fragment" >
+        <action
+            android:id="@+id/action_navOneFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+        <action
+            android:id="@+id/action_navOneFragment_to_lastFragment"
+            app:destination="@id/lastFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.mvvm_hilt.ui.fragment.FirstFragment"
+        android:label="first_fragment"
+        tools:layout="@layout/first_fragment" >
+        <action
+            android:id="@+id/action_firstFragment_to_navOneFragment"
+            app:destination="@id/navOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lastFragment"
+        android:name="com.example.mvvm_hilt.ui.fragment.LastFragment"
+        android:label="last_fragment"
+        tools:layout="@layout/last_fragment" >
+        <action
+            android:id="@+id/action_lastFragment_to_navOneFragment"
+            app:destination="@id/navOneFragment" />
+    </fragment>
+</navigation>

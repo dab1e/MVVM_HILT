@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.mvvm_hilt.databinding.LastFragmentBinding
 import com.example.mvvm_hilt.ui.viewmodel.LastViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LastFragment : Fragment() {
 
     companion object {

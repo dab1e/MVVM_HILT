@@ -12,7 +12,16 @@ import com.example.mvvm_hilt.data.model.User
 import com.example.mvvm_hilt.databinding.NavOneFragmentBinding
 import com.example.mvvm_hilt.ui.adapter.RecyclerUserAdapter
 import com.example.mvvm_hilt.ui.viewmodel.NavOneViewModel
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.components.ActivityComponent
+import javax.inject.Singleton
 
+@AndroidEntryPoint
+@Module
+@InstallIn(ActivityComponent::class)
 class NavOneFragment : Fragment() {
 
     companion object {
@@ -34,6 +43,10 @@ class NavOneFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(NavOneViewModel::class.java)
         viewModel.getUser()
+//        binding.rcUser.apply {
+//            layoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//        }
         viewModel.listUser.observe(viewLifecycleOwner,{
             adapterUser = RecyclerUserAdapter(it)
             binding.rcUser.apply {
@@ -42,5 +55,9 @@ class NavOneFragment : Fragment() {
             }
         })
     }
+
+    @Singleton
+    @Provides
+    fun getviewLifecycleOwner() = viewLifecycleOwner
 
 }

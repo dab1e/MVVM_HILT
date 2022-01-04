@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mvvm_hilt.data.model.User
 import com.example.mvvm_hilt.data.repo.RepositoryApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class NavOneViewModel : ViewModel() {
-    private val repo = RepositoryApp()
+@HiltViewModel
+class NavOneViewModel @Inject constructor(private val repo: RepositoryApp): ViewModel() {
     var listUser = MutableLiveData<ArrayList<UserShow>>()
     fun getUser(){
         repo.getUserRepo()
@@ -28,7 +30,7 @@ class NavOneViewModel : ViewModel() {
                 },{
                     Log.e("ERROR_GET_USER", it.toString())
                 }
-                    )
+            )
     }
 }
 

@@ -7,7 +7,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.mvvm_hilt.databinding.ActivityMainBinding
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.components.ActivityComponent
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,4 +31,6 @@ class MainActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.fragment_host_content_main)
         return navController.navigateUp()
     }
+
+
 }
